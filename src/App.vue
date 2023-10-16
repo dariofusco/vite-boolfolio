@@ -15,7 +15,7 @@ export default {
   methods: {
     fetchData() {
       axios.get("http://127.0.0.1:8000/api/projects").then((response) => {
-        this.projects = response.data.results;
+        this.projects = response.data.results.data;
       });
     },
     getImageUrl(project) {
@@ -34,7 +34,7 @@ export default {
     <div class="row">
       <h1 class="py-3">I Miei Progetti</h1>
       <div class="col-3" v-for="project in projects">
-        <ProjectCard :image="getImageUrl(project)" :name="project.name" :type="project.type" :technology="project.technology"
+        <ProjectCard :image="getImageUrl(project)" :name="project.name" :type="project.type.name" :technology="project.technologies"
           :description="project.description" :date="project.date" :github_link="project.github_link">
         </ProjectCard>
       </div>
