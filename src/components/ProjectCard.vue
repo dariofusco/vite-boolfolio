@@ -6,7 +6,7 @@ export default {
         type: String, 
         technology: String,
         description: String,
-        date: Date,
+        date: String,
         github_link: String
     },
 
