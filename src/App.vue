@@ -1,8 +1,12 @@
 <script>
-
 import axios from "axios";
+import ProjectCard from "./components/ProjectCard.vue";
 
 export default {
+  components: {
+    ProjectCard,
+  },
+
   data() {
     return {
       projects: [],
@@ -14,6 +18,9 @@ export default {
         this.projects = response.data.results;
       });
     },
+    getImageUrl(project) {
+      return `http://127.0.0.1:8000/storage/${project.image}`;
+    },
   },
   mounted() {
     this.fetchData();
@@ -22,6 +29,17 @@ export default {
 
 </script>
 
-<template></template>
+<template>
+  <div class="container">
+    <div class="row">
+      <h1 class="py-3">I Miei Progetti</h1>
+      <div class="col-3" v-for="project in projects">
+        <ProjectCard :image="getImageUrl(project)" :name="project.name" :type="project.type" :technology="project.technology"
+          :description="project.description" :date="project.date" :github_link="project.github_link">
+        </ProjectCard>
+      </div>
+    </div>
+  </div>
+</template>
 
 <style lang="scss"></style>
