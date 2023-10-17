@@ -1,5 +1,6 @@
 <script>
 import axios from "axios";
+
 export default {
     name: "Show",
 
@@ -9,16 +10,19 @@ export default {
         };
     },
     methods: {
+
         fetchData() {
             axios
-                .get("http://127.0.0.1:8000/api/projects" + this.$route.params.id)
+                .get("http://127.0.0.1:8000/api/projects/" + this.$route.params.id)
                 .then((response) => {
-                    this.projects = response.data.results;
+                    this.project = response.data.results;
                 });
         },
+
         getImageUrl(project) {
             return `http://127.0.0.1:8000/storage/${project.image}`;
         },
+
         getDateFormat(dateString) {
             const date = new Date(dateString);
             return new Intl.DateTimeFormat('default', { dateStyle: 'long' }).format(date);

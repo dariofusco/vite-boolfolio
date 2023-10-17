@@ -20,7 +20,7 @@ export default {
             axios
                 .get("http://127.0.0.1:8000/api/projects")
                 .then((response) => {
-                    this.projects = response.data.results.data;
+                    this.projects = response.data.results;
                 });
         },
 
@@ -48,7 +48,7 @@ export default {
             <div class="col-3" v-for="project in projects">
                 <ProjectCard :image="getImageUrl(project)" :name="project.name" :type="project.type.name"
                     :technologies="project.technologies" :description="project.description"
-                    :date="getDateFormat(project.date)" :github_link="project.github_link">
+                    :date="getDateFormat(project.date)" :github_link="project.github_link" :id="project.id">
                 </ProjectCard>
             </div>
         </div>

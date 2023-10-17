@@ -26,8 +26,6 @@ export default {
   <header>
     <nav class="container">
       <div class="py-3 d-flex">
-        LOGO
-
         <ul class="ms-auto d-flex list-unstyled gap-3">
           <li><router-link to="/">Home</router-link></li>
           <li><router-link :to="{ name: 'projects.index' }">Projects</router-link></li>
