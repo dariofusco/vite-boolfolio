@@ -1,38 +1,21 @@
 <script>
-import axios from "axios";
-import ProjectCard from "./components/ProjectCard.vue";
 
 export default {
   components: {
-    ProjectCard,
+
   },
 
   data() {
     return {
-      projects: [],
+
     };
   },
   methods: {
 
-    fetchData() {
-      axios.get("http://127.0.0.1:8000/api/projects").then((response) => {
-        this.projects = response.data.results.data;
-      });
-    },
-
-    getImageUrl(project) {
-      return `http://127.0.0.1:8000/storage/${project.image}`;
-    },
-
-    getDateFormat(dateString) {
-      const date = new Date(dateString);
-      return new Intl.DateTimeFormat('default', { dateStyle: 'long' }).format(date);
-    }
-
   },
 
   mounted() {
-    this.fetchData();
+
   },
 
 };
@@ -40,17 +23,20 @@ export default {
 </script>
 
 <template>
-  <div class="container">
-    <div class="row">
-      <h1 class="py-3">I Miei Progetti</h1>
-      <div class="col-3" v-for="project in projects">
-        <ProjectCard :image="getImageUrl(project)" :name="project.name" :type="project.type.name"
-          :technologies="project.technologies" :description="project.description" :date="getDateFormat(project.date)"
-          :github_link="project.github_link">
-        </ProjectCard>
+  <header>
+    <nav class="container">
+      <div class="py-3 d-flex">
+        LOGO
+
+        <ul class="ms-auto d-flex list-unstyled gap-3">
+          <li><router-link to="/">Home</router-link></li>
+          <li><router-link :to="{ name: 'projects.index' }">Projects</router-link></li>
+        </ul>
       </div>
-    </div>
-  </div>
+    </nav>
+  </header>
+
+  <router-view></router-view>
 </template>
 
 <style lang="scss"></style>
