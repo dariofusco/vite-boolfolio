@@ -15,8 +15,8 @@ export default {
             axios
                 .get("http://127.0.0.1:8000/api/projects/" + this.$route.params.id)
                 .then((response) => {
-                    //this.project = response.data.results;
-                    console.log(response);
+                    this.project = response.data.results;
+                    console.log(this.project);
                 });
         },
 
@@ -43,16 +43,16 @@ export default {
         <h1>{{ project.name }}</h1>
 
         <h2>
-            <span class="badge text-bg-secondary">{{ project.type ? project.type.name:'' }}
+            <span class="badge text-bg-secondary">{{ project.type ? project.type.name: '' }}
 
-                <span class="badge text-bg-info">{{ technology.name }}</span>
+                <span class="badge text-bg-info" v-for="technology in project.technologies">{{ technology.name }}</span>
 
             </span>
         </h2>
 
         <p>{{ project.description }}</p>
 
-        <p>{{ getDateFormat(project.date) }}</p>
+        <p>{{ project.date ? getDateFormat(project.date) : '' }}</p>
 
         <div>
             <img :src="getImageUrl(project)" alt="" class="img-fluid" style="width: 250px">
