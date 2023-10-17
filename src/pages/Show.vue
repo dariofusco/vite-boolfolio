@@ -43,7 +43,7 @@ export default {
         <h1>{{ project.name }}</h1>
 
         <h2>
-            <span class="badge text-bg-secondary">{{ project.type.name }}
+            <span class="badge text-bg-secondary">{{ project.type ? project.type.name:'' }}
 
                 <span class="badge text-bg-info">{{ technology.name }}</span>
 
