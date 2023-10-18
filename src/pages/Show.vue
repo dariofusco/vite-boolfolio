@@ -9,6 +9,7 @@ export default {
             project: {},
         };
     },
+
     methods: {
 
         fetchData() {
@@ -16,12 +17,13 @@ export default {
                 .get("http://127.0.0.1:8000/api/projects/" + this.$route.params.id)
                 .then((response) => {
                     this.project = response.data.results;
-                    console.log(this.project);
                 });
         },
 
         getImageUrl(project) {
-            return `http://127.0.0.1:8000/storage/${project.image}`;
+            if (project.image) {
+                return `http://127.0.0.1:8000/storage/${project.image}`;
+            }
         },
 
         getDateFormat(dateString) {
@@ -43,7 +45,7 @@ export default {
         <h1>{{ project.name }}</h1>
 
         <h2>
-            <span class="badge text-bg-secondary">{{ project.type ? project.type.name: '' }}
+            <span class="badge text-bg-secondary">{{ project.type ? project.type.name : '' }}
 
                 <span class="badge text-bg-info" v-for="technology in project.technologies">{{ technology.name }}</span>
 
