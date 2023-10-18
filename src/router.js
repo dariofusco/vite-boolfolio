@@ -35,5 +35,5 @@ const router = createRouter({
     routes
 });
 
-// esporto l'istanta router per poterla usare dentro main.js
+// esporto l'istanza router per poterla usare dentro main.js
 export { router };

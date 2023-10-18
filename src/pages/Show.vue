@@ -21,6 +21,7 @@ export default {
         },
 
         getImageUrl(project) {
+            //Solo se project.image esiste
             if (project.image) {
                 return `http://127.0.0.1:8000/storage/${project.image}`;
             }
@@ -45,6 +46,7 @@ export default {
         <h1>{{ project.name }}</h1>
 
         <h2>
+            <!--Effettuo un controllo in modo da visualizzare i risultati solo quando sono disponibili, altrimenti ottengo un errore-->
             <span class="badge text-bg-secondary">{{ project.type ? project.type.name : '' }}
 
                 <span class="badge text-bg-info" v-for="technology in project.technologies">{{ technology.name }}</span>
@@ -53,10 +55,11 @@ export default {
         </h2>
 
         <p>{{ project.description }}</p>
-
+        <!--Effettuo un controllo in modo da visualizzare i risultati solo quando sono disponibili, altrimenti ottengo un errore-->
         <p>{{ project.date ? getDateFormat(project.date) : '' }}</p>
 
         <div>
+            <!--In questo caso il controllo lo faccio direttamente nella funzione nei methods-->
             <img :src="getImageUrl(project)" alt="" class="img-fluid" style="width: 250px">
         </div>
 
