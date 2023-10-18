@@ -43,7 +43,7 @@ export default {
 </script>
 
 <template>
-    <div class="container">
+    <div class="container vh-100">
         <div class="row">
             <h1 class="py-3">I Miei Progetti</h1>
             <div class="col-3" v-for="project in projects">

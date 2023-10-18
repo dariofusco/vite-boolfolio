@@ -41,7 +41,7 @@ export default {
 </script>
 
 <template>
-    <div class="container py-3 text-center">
+    <div class="container py-3 text-center vh-100">
 
         <h1>{{ project.name }}</h1>
 
