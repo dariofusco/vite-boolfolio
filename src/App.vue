@@ -30,6 +30,7 @@ export default {
         <ul class="navbar-nav flex-row gap-3">
           <li class="nav-item"><router-link class="nav-link" to="/">Home</router-link></li>
           <li class="nav-item"><router-link class="nav-link" :to="{ name: 'projects.index' }">Projects</router-link></li>
+          <li class="nav-item"><router-link class="nav-link" :to="{name: 'contacts'}">Contacts</router-link></li>
         </ul>
       </div>
     </nav>

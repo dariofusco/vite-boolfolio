@@ -4,6 +4,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "./pages/Home.vue";
 import ProjectsIndexPage from "./pages/Index.vue";
 import ProjectsShowPage from "./pages/Show.vue";
+import ContactsPage from "./pages/Contacts.vue";
 
 // definisco le rotte
 const routes = [
@@ -24,6 +25,12 @@ const routes = [
         path: "/projects/:id",
         name: "projects.show",
         component: ProjectsShowPage
+    },
+
+    {
+        path: "/contatti",
+        name: "contacts",
+        component: ContactsPage,
     }
 ]
 
